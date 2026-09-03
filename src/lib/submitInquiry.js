@@ -5,7 +5,7 @@
 export async function submitInquiry(payload) {
   // Build a WhatsApp click-to-chat message using the business number.
   // If `window` is available (browser), open WhatsApp; otherwise return a test-friendly object.
-  const phone = '+919977906634'
+  const phone = '+919753111687'
   const message = `Hello SM Design Studio,\n\nI have a new project inquiry.\n\nName: ${payload.name}\nPhone: ${payload.phone}\nEmail: ${payload.email}\nProject Type: ${payload.projectType}\n\nMessage:\n${payload.message}\n\nPlease contact me regarding this project.`
   const encoded = typeof encodeURIComponent === 'function' ? encodeURIComponent(message) : message
   const url = `https://wa.me/${phone}?text=${encoded}`
