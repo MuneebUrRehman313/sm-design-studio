@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import BrandStatement from './components/BrandStatement'
 import Projects from './components/Projects'
+import OnSiteProjects from './components/OnSiteProjects'
 import Services from './components/Services'
 import About from './components/About'
 import Process from './components/Process'
@@ -19,6 +20,7 @@ export default function App() {
         <Hero />
         <BrandStatement />
         <Projects />
+        <OnSiteProjects />
         <Services />
         <About />
         <Process />

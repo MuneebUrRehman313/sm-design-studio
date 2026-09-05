@@ -9,6 +9,7 @@ export const studio = {
 export const navLinks = [
   { id: 'home', label: 'Home', href: '#home' },
   { id: 'projects', label: 'Projects', href: '#projects' },
+  { id: 'on-site-projects', label: 'On-Site Projects', href: '#on-site-projects' },
   { id: 'services', label: 'Services', href: '#services' },
   { id: 'about', label: 'About', href: '#about' },
   { id: 'contact', label: 'Contact', href: '#contact' },
