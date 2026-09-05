@@ -30,6 +30,9 @@ export default function Footer() {
             <a href={contactPlaceholders.whatsappHref} className="text-cream-muted hover:text-cream">
               WhatsApp
             </a>
+            <a href="/admin/login" className="text-cream-muted hover:text-cream">
+              Admin Login
+            </a>
           </div>
         </div>
         <p className="border-t border-line pt-6 text-xs text-cream-muted">

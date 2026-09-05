@@ -1,9 +1,15 @@
 import { useEffect, useId } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, X } from 'lucide-react'
+import { useState } from 'react'
 
 export default function ProjectModal({ project, onClose }) {
   const titleId = useId()
+  const [imageIndex, setImageIndex] = useState(0)
+
+  useEffect(() => {
+    setImageIndex(0)
+  }, [project])
 
   useEffect(() => {
     if (!project) return undefined
@@ -39,10 +45,19 @@ export default function ProjectModal({ project, onClose }) {
             transition={{ duration: 0.35 }}
           >
             <div className="grid md:grid-cols-[1.1fr_0.9fr]">
-              <div className="grid gap-px bg-line sm:grid-cols-2 md:block">
-                {project.images.map((image) => (
-                  <img key={image.src} src={image.src} srcSet={image.srcSet} alt={image.alt} className="aspect-[4/3] h-full w-full object-cover md:aspect-[4/5]" />
-                ))}
+              <div className="relative bg-ink">
+                <img src={project.images[imageIndex].src} srcSet={project.images[imageIndex].srcSet} alt={project.images[imageIndex].alt} className="aspect-[4/3] h-full w-full object-cover md:aspect-[4/5]" />
+                {project.images.length > 1 ? (
+                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-ink/70 p-4">
+                    <button type="button" onClick={() => setImageIndex((current) => (current - 1 + project.images.length) % project.images.length)} className="inline-flex h-10 w-10 items-center justify-center border border-cream/30 text-cream" aria-label="Previous project image">
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+                    <span className="text-[10px] tracking-[0.2em] text-cream uppercase">{imageIndex + 1} / {project.images.length}</span>
+                    <button type="button" onClick={() => setImageIndex((current) => (current + 1) % project.images.length)} className="inline-flex h-10 w-10 items-center justify-center border border-cream/30 text-cream" aria-label="Next project image">
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                ) : null}
               </div>
               <div className="p-6 md:p-10">
                 <div className="flex items-start justify-between gap-6">

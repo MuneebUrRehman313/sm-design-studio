@@ -38,7 +38,9 @@ export default function OnSiteProjectCard({ project, index, onSelect }) {
           <div>
             <p className="text-[10px] tracking-[0.25em] text-gold uppercase">{project.category}</p>
             <h3 className="editorial-heading mt-2 text-2xl text-cream md:text-3xl">{project.title}</h3>
-            <p className="mt-2 text-xs text-cream-muted">{project.status}</p>
+            <p className="mt-2 text-xs text-cream-muted">
+              {project.status}{project.location ? ` · ${project.location}` : ''}{project.year ? ` · ${project.year}` : ''}
+            </p>
           </div>
           <span className="shrink-0 translate-y-2 text-[10px] tracking-[0.18em] text-cream uppercase opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
             View Project <ArrowUpRight className="ml-1 inline h-3.5 w-3.5" aria-hidden="true" />

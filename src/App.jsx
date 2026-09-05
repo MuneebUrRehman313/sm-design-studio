@@ -11,8 +11,13 @@ import VisualShowcase from './components/VisualShowcase'
 import CTA from './components/CTA'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import ProtectedRoute from './components/admin/ProtectedRoute'
+import AdminLogin from './pages/admin/AdminLogin'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import ProjectEditor from './pages/admin/ProjectEditor'
 
-export default function App() {
+function PublicSite() {
   return (
     <div className="min-h-dvh bg-ink text-cream">
       <Navbar />
@@ -31,5 +36,39 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<PublicSite />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/new"
+        element={
+          <ProtectedRoute>
+            <ProjectEditor />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/dashboard/:projectId/edit"
+        element={
+          <ProtectedRoute>
+            <ProjectEditor />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   )
 }
